@@ -1,0 +1,26 @@
+# -*- sh -*-
+
+source $HOME/.shell-helpers/colors
+
+export BROWSER=firefox
+export EDITOR=vim
+export HISTCONTROL=ignoredups # don't add duplicate entries to command history
+export HISTSIZE=9001 # save more command history
+export LESS_TERMCAP_mb="$cyan"
+export LESS_TERMCAP_md="$blue"
+export LESS_TERMCAP_me="$resetcolors"
+export LESS_TERMCAP_se="$resetcolors"
+export LESS_TERMCAP_so="$yellow"
+export LESS_TERMCAP_ue="$resetcolors"
+export LESS_TERMCAP_us="$magenta"
+export MANWIDTH=72 # wrap lines at 72 columns in manual pages
+export PATH="/usr/local/heroku/bin:$HOME/bin:$HOME/.cabal/bin:/usr/local/bin:$PATH"
+export SAVEHIST=$HISTSIZE
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
+# only override the default terminal if the current terminal supports 256 colors
+if [ "$(tput colors)" = "256" ]; then
+  export TERM=screen-256color # this seems to work better with tmux
+fi
+
+# vim: set ft=sh:

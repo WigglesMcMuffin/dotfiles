@@ -1,0 +1,89 @@
+# -*- sh -*-
+
+alias ag='ag --smart-case' # case sensitive searches only when capitals are present
+alias agf='ag -g' # search for files with a certian name
+alias be='bundle exec'
+alias f1='fg %1'
+alias f2='fg %2'
+alias f3='fg %3'
+alias f4='fg %4'
+alias f5='fg %5'
+alias f=fg
+alias gst='git status'
+alias la='ls --almost-all'
+alias ll='ls -l --human-readable'
+alias m=mutt
+alias np='export PATH="$PWD/node_modules/.bin:$PATH"'
+alias psag='ps -awux | ag'
+alias rh=runhaskell
+alias rspec='rspec --color'
+alias server='php -S localhost:9000'
+alias tah='tmux attach-session -t "$(basename $PWD | sed "s/\W/-/g")"' # "tmux attach here"
+alias ta='tmux attach-session -t'
+alias tls='tmux list-sessions'
+alias tn='tmux new-session -s'
+alias t='s="$(basename $PWD | sed "s/\W/-/g")" && tmux attach-session -t $s || tmux new-session -s $s'
+alias vdown='vagrant halt'
+alias vemacs='TERM=xterm-16color emacs -nw --no-init-file' # 'vanilla' emacs (without extra scripts/plugins)
+alias vimrc='vim "$HOME/.vimrc"'
+alias vmacs='TERM=xterm-16color emacs -nw --no-init-file' # 'vanilla' emacs (without extra scripts/plugins)
+alias vssh='vagrant up && vagrant ssh'
+alias vup='vagrant up'
+alias v=vim
+alias vvim='vim -u NONE -U NONE' # 'vanilla' vim (without extra scripts/plugins)
+alias '?'='which'
+if [ -n "$(command -v rlwrap)" ]; then
+  alias csi='rlwrap csi'
+  alias guile='rlwrap guile'
+  alias node='NODE_NO_READLINE=1 rlwrap node'
+  alias racket='rlwrap racket'
+  alias sbcl='rlwrap sbcl'
+fi
+if [ -x "$(command -v xdg-open)" ]; then
+  alias open=xdg-open
+fi
+alias :split='vim -o'
+alias split='vim -o'
+alias :spli='vim -o'
+alias spli='vim -o'
+alias :spl='vim -o'
+alias spl='vim -o'
+alias :sp='vim -o'
+alias sp='vim -o'
+alias :tabedit='vim -p'
+alias tabedit='vim -p'
+alias :tabedi='vim -p'
+alias tabedi='vim -p'
+alias :tabed='vim -p'
+alias tabed='vim -p'
+alias :tabe='vim -p'
+alias tabe='vim -p'
+alias :vsplit='vim -O'
+alias vsplit='vim -O'
+alias :vspli='vim -O'
+alias vspli='vim -O'
+alias :vspl='vim -O'
+alias vspl='vim -O'
+alias :vsp='vim -O'
+alias vsp='vim -O'
+alias :vs='vim -O'
+alias vs='vim -O'
+
+# platform specific
+
+# update the system with 'u'
+if [ "$(uname --operating-system)" = "GNU/Linux" ]; then
+  if [ -x "$(command -v pacman)" ]; then
+    alias u="su -c 'pacman --sync --refresh --sysupgrade'"
+  fi
+elif [ "$(uname --operating-system)" = "Darwin" ]; then
+  if [ -x "$(command -v brew)" ]; then
+    alias u='sudo softwareupdate --download --install --all && brew update && brew upgrade'
+  else
+    alias u='sudo softwareupdate --download --install --all'
+  fi
+else
+  alias u='echo Unsure how to update this system'
+fi
+
+# vim: set ft=sh:
