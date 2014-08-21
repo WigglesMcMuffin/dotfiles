@@ -112,3 +112,8 @@ source ~/.tmuxinator.zsh
 export DYN_CHEF_DATA="${HOME}/work/cookbooks/dyn_chef_data"
 export SSL_CERT_FILE="${DYN_CHEF_DATA}/config/cacert.pem"
 export DRIVER_PLUGIN="vagrant"
+
+function chpwd() {
+	emulate -L zsh
+   	ls -A
+}

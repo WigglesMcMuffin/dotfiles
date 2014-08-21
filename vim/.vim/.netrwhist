@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/tmoss/vagrants/vagrant_selenium/playbooks/roles/host/templates'
 let g:netrw_dirhist_2='/home/tmoss/vagrants/vagrant_selenium/playbooks/roles/nodes/tasks'
 let g:netrw_dirhist_3='/home/tmoss/vagrants/vagrant_selenium/playbooks/roles/host/vars'
 let g:netrw_dirhist_4='/home/tmoss/.shell-helpers'
 let g:netrw_dirhist_5='/home/tmoss/.vim/after/syntax'
 let g:netrw_dirhist_6='/home/tmoss/.gnupg'
+let g:netrw_dirhist_7='/home/tmoss/projects/dotfiles/zsh'
