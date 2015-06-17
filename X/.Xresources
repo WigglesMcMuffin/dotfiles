@@ -10,6 +10,7 @@
 ! left click to open URLs
 Rxvt.url-launcher: /bin/firefox
 Rxvt.matcher.button: 1
+!urxvt*font: xft:Terminus:pixelsize=12,xft:Inconsolata\ for\ Powerline:pixelsize=12
 
 ! Solarized color scheme for the X Window System
 !

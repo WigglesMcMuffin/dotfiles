@@ -44,6 +44,11 @@ if has('clipboard')
   set clipboard=unnamed,unnamedplus " make copied text available to the OS' clipboard
 endif
 
+augroup vimrc_autocmds
+	autocmd BufEnter * highlight OverLength ctermbg=darkred ctermfg=white
+	autocmd BufEnter * match OverLength /\%81v.\+/
+augroup END
+
 "folding settinvgs
 set foldmethod=indent                                       " fold text based on the default marker (see `:help foldmarker`)
 set foldnestmax=10
@@ -100,6 +105,19 @@ let g:agprg="ag --column --smart-case --literal"
 
 " show the current file's functions (https://github.com/majutsushi/tagbar)
 noremap <silent> <leader>t :TagbarOpenAutoClose<cr>
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'gmarik/Vundle.vim'
+
+Plugin 'bling/vim-airline'
+
+call vundle#end()
+filetype plugin indent on
+
+let g:airline#extensions#tabline#enabled = 1
+
 
 " plugin specific }}}
 
