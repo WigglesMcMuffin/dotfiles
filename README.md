@@ -2,6 +2,7 @@
 
 ## Packages
 - zsh
+  - oh my zsh
 - fzf
 - dmenu
 - vim
@@ -9,6 +10,4 @@
 - byobu
 - qutebrowser
 - awesome
-
-## Extras
-- oh my zsh
+- lpass-cli
