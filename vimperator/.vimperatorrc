@@ -1,7 +1,0 @@
-"3.8.2 (created: 2014/02/13 23:52:43)
-
-noremap j 3j
-noremap k 3k
-source! /home/tmoss/.vimperatorrc.local
-
-" vim: set ft=vimperator:
