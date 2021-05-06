@@ -32,10 +32,9 @@ window:
 
   # Window decorations
   # Setting this to false will result in window without borders and title bar.
-  decorations: true
+  decorations: full
 
-# Display tabs using this many cells (changes require restart)
-tabspaces: 8
+  dynamic_title: true
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -61,33 +60,26 @@ draw_bold_text_with_bright_colors: true
 # * file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
   # The normal (roman) font face to use.
+  # Need nerdfont installed
   normal:
-    # family: monospace # should be "Menlo" or something on macOS.
     family: Shure Tech Mono Nerd Font
-    # family: Hack Nerd Font
     # Style can be specified to pick a specific face.
     # style: Regular
 
   # The bold font face
   bold:
-    # family: monospace # should be "Menlo" or something on macOS.
-    # family: ShureTechMono Nerd Font Mono
     family: Shure Tech Mono Nerd Font
-    # family: Hack Nerd Font
     # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
-    # family: monospace # should be "Menlo" or something on macOS.
-    # family: ShureTechMono Nerd Font Mono
     family: Shure Tech Mono Nerd Font
-    # family: Hack Nerd Font
     # Style can be specified to pick a specific face.
     # style: Italic
 
   # Point size of the font
-  size: 15.0
+  size: 12.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -102,20 +94,8 @@ font:
     x: 0
     y: 0
 
-  # OS X only: use thin stroke font rendering. Thin strokes are suitable
-  # for retina displays, but for non-retina you probably want this set to
-  # false.
-  use_thin_strokes: true
-
 # Should display the render timer
-render_timer: false
-
-# Use custom cursor colors. If true, display the cursor in the cursor.foreground
-# and cursor.background colors, otherwise invert the colors of the cursor.
-custom_cursor_colors: false
-#  primary:
-#    background: '0xf1f1f1'
-#    foreground: '0x424242'
+debug.render_timer: false
 
 # Colors (Nord)
 colors:
@@ -144,75 +124,6 @@ colors:
     cyan:    '0x8fbcbb'
     white:   '0xeceff4'
 
-## Colors (Pencil Light)
-#colors:
-#  primary:
-#    background: '0x000000'
-#    foreground: '0xffffff'
-#  normal:
-#    black:   '0x212121'
-#    red:     '0xc30771'
-#    green:   '0x10a778'
-#    yellow:  '0xa89c14'
-#    blue:    '0x008ec4'
-#    magenta: '0x523c79'
-#    cyan:    '0x20a5ba'
-#    white:   '0xe0e0e0'
-#  bright:
-#    black:   '0x212121'
-#    red:     '0xfb007a'
-#    green:   '0x5fd7af'
-#    yellow:  '0xf3e430'
-#    blue:    '0x20bbfc'
-#    magenta: '0x6855de'
-#    cyan:    '0x4fb8cc'
-#    white:   '0xf1f1f1'
-
-## Colors (Tomorrow Night Bright)
-#colors:
-#  # Default colors
-#  primary:
-#    background: '0x000000'
-#    foreground: '0xeaeaea'
-#
-#  # Colors the cursor will use if `custom_cursor_colors` is true
-#  cursor:
-#    text: '0x000000'
-#    cursor: '0xffffff'
-#
-#  # Normal colors
-#  normal:
-#    black:   '0x000000'
-#    red:     '0xd54e53'
-#    green:   '0xb9ca4a'
-#    yellow:  '0xe6c547'
-#    blue:    '0x7aa6da'
-#    magenta: '0xc397d8'
-#    cyan:    '0x70c0ba'
-#    white:   '0xffffff'
-#
-#  # Bright colors
-#  bright:
-#    black:   '0x666666'
-#    red:     '0xff3334'
-#    green:   '0x9ec400'
-#    yellow:  '0xe7c547'
-#    blue:    '0x7aa6da'
-#    magenta: '0xb77ee0'
-#    cyan:    '0x54ced6'
-#    white:   '0xffffff'
-#
-#  # Dim colors (Optional)
-#  dim:
-#    black:   '0x333333'
-#    red:     '0xf2777a'
-#    green:   '0x99cc99'
-#    yellow:  '0xffcc66'
-#    blue:    '0x6699cc'
-#    magenta: '0xcc99cc'
-#    cyan:    '0x66cccc'
-#    white:   '0xdddddd'
-
 # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
@@ -234,8 +145,7 @@ colors:
 # `Linear`
 #
 # To completely disable the visual bell, set its duration to 0.
-#
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 
@@ -277,35 +187,20 @@ mouse:
   # scrolling for applications like `man`.
   #
   # To disable this completely, set `faux_scrollback_lines` to 0.
-  faux_scrollback_lines: 1
+  faux_scrolling_lines: 1
+
+  hide_when_typing: false
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
-dynamic_title: true
-
-hide_cursor_when_typing: false
 
 # Style of the cursor
-#
-# Values for 'cursor_style':
-# - Block
-# - Underline
-# - Beam
-cursor_style: Block
+cursor:
+  style: Block
 
 # Live config reload (changes require restart)
 live_config_reload: true
-
-# Shell
-#
-# You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
-# Entries in shell.args are passed unmodified as arguments to the shell.
-#
-# shell:
-#   program: /bin/bash
-#   args:
-#     - --login
 
 # Key bindings
 #
@@ -354,7 +249,7 @@ key_bindings:
   - { key: Insert,   mods: Shift,   action: PasteSelection               }
   - { key: Key0,     mods: Control, action: ResetFontSize                }
   - { key: Equals,   mods: Control, action: IncreaseFontSize             }
-  - { key: Subtract, mods: Control, action: DecreaseFontSize             }
+  - { key: Minus,    mods: Control, action: DecreaseFontSize             }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
   - { key: Home,                    chars: "\x1b[H",   mode: ~AppCursor  }
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }

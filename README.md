@@ -22,3 +22,5 @@
 - qutebrowser
 - awesome
 - lpass-cli
+- feh
+- maim
