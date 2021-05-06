@@ -1,8 +1,4 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/home/tmoss/china_pop/_china'
-let g:netrw_dirhist_2='/home/tmoss/projects/jackal_demo/host_update_logs.egg-info'
-let g:netrw_dirhist_3='/home/tmoss/china_pop/china_multiverse'
-let g:netrw_dirhist_4='/home/tmoss/work/cookbooks/dyn_chef_data/cookbooks/dyn_jackal/attributes'
-let g:netrw_dirhist_5='/home/tmoss/projects/dyn_jackal/attributes'
-let g:netrw_dirhist_6='/home/tmoss/china_pop/_china/recipes'
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/home/tmoss'
+let g:netrw_dirhist_2='/home/tmoss/bin'

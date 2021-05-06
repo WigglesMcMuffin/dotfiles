@@ -1,0 +1,1 @@
+/home/tmoss/.fzf/plugin/fzf.vim
