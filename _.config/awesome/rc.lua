@@ -7,7 +7,9 @@ local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
+local _dbus = dbus; dbus = nil
 local naughty = require("naughty")
+dbus = _dbus
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup").widget
 -- Enable hotkeys help widget for VIM and other apps
@@ -48,6 +50,8 @@ end
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
 -- Pomodoro app
+local pomodoro = require("pomodoro")
+pomodoro.init()
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -235,6 +239,8 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            pomodoro.widget, pomodoro.icon_widget,
+            require("battery-widget") {},
             -- mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
@@ -335,8 +341,7 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
+    awful.key({ modkey }, "r", function () awful.util.spawn_with_shell('rofi -show run') end),
 
     awful.key({ modkey }, "x",
               function ()
@@ -349,7 +354,12 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     awful.key({ modkey, "Shift" }, "p", function () awful.util.spawn_with_shell('/home/tmoss/bin/get_pass') end),
-    awful.key({ modkey, "Mod1" }, "l", function () awful.util.spawn_with_shell('slock') end)
+    awful.key({ modkey }, "p", function() pomodoro:start() end),
+    awful.key({ modkey, "Control" }, "p", function () pomodoro:increase_time() end),
+    awful.key({ modkey, "Mod1" }, "p", function () pomodoro:decrease_time() end),
+    awful.key({ modkey, "Control", "Shift" }, "p", function () pomodoro:stop() end),
+    awful.key({ modkey, "Mod1" }, "l", function () awful.util.spawn_with_shell('slock') end),
+    awful.key({ modkey, "Shift" }, "n", function () awful.util.spawn_with_shell('kill -s USR1 $(pidof deadd-notification-center)') end)
     -- Menubar
     -- awful.key({ modkey }, "p", function() menubar.show() end,
     --          {description = "show the menubar", group = "launcher"})

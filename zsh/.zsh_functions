@@ -1,0 +1,23 @@
+powerlevel9k_random_color(){
+	local code
+	#for code ({000..255}) echo -n "$%F{$code}"
+	#code=$[${RANDOM}%11+10]    # random between 10-20
+	code=$[${RANDOM}%211+20]    # random between 20-230
+	printf "%03d" $code
+}
+
+function find_instance() {
+  aws ec2 describe-instances --filter "Name=tag:chef-environment,Values=$1" "Name=tag:chef-role,Values=$2" | grep InstanceId | cut -f4 -d'"' | shuf -n 1
+}
+
+function find_instances() {
+  aws ec2 describe-instances --filter "Name=tag:chef-environment,Values=$1" "Name=tag:chef-role,Values=$2"
+}
+
+function aws_ssh() {
+  aws ssm start-session --target "$1"
+}
+
+function aws_ssh_find() {
+  aws_ssh $(find_instance "$1" "$2")
+}

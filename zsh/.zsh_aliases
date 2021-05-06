@@ -1,1 +1,19 @@
+alias ..='cd ..'
+
+# Take a screenshot
 alias screenie='() { scrot ~/screencaps/$@.png }'
+
+
+alias ls='() { $(whence -p ls) -C --file-type --color=auto --group-directories-first $@ }'
+
+# colour greps
+alias grep='() { $(whence -p grep) --color=auto $@ }'
+alias egrep='() { $(whence -p egrep) --color=auto $@ }'
+alias rgrep='() { $(whence -p rgrep) --color=auto --exclude-dir=.git $@ }'
+
+# Show what rm is rm-ing
+alias rm='rm -v'
+alias rspec='rspec --color'
+alias vimrc='vim "$HOME/.vimrc"'
+
+zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
