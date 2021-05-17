@@ -17,3 +17,5 @@ alias rspec='rspec --color'
 alias vimrc='vim "$HOME/.vimrc"'
 
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
+alias pac=yay
+pacmatic="sudo --preserve-env=pacman_program /usr/bin/pacmatic"
