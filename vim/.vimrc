@@ -1,12 +1,8 @@
 version 6.0
 if &cp | set nocp | endif
 let s:cpo_save=&cpo
+let mapleader = ","
 set cpo&vim
-" No clue what these do or did
-" vmap gx <Plug>NetrwBrowseXVis
-" nmap gx <Plug>NetrwBrowseX
-" vnoremap <silent> <Plug>NetrwBrowseXVis :^V^Ucall netrw#BrowseXVis()^V^M
-" nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '^V<cfile>')),netrw#CheckIfRemote())^V^M
 " inoremap ^V^U ^V^Gu^V^U
 nnoremap - :Explore<Cr>
 let &cpo=s:cpo_save
@@ -22,6 +18,7 @@ set incsearch
 set langnoremap
 set nolangremap
 set nrformats=bin,hex
+set autowrite
 set ruler
 set runtimepath+=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after
 set scrolloff=5
@@ -50,16 +47,15 @@ autocmd ColorScheme * hi HiTabs ctermbg=gray
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 
 " Tab with spaces, but less of them
-set tabstop=8
+set tabstop=4
 set softtabstop=0
 set expandtab
-set shiftwidth=4
+set shiftwidth=2
 set smarttab
 
 " Make things look purdy
 syntax enable
 set number
-set relativenumber
 set fdm=indent
 filetype plugin indent on
 
@@ -79,6 +75,10 @@ Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
 Plug 'janko/vim-test'
 
+Plug 'fatih/vim-go'
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'SirVer/ultisnips'
+
 call plug#end()
 
 " Language Servers
@@ -93,11 +93,37 @@ nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
+nnoremap <F5> <Plug>(lcn-menu)
+
 " Easy Align keybinds
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" vim-go keybinds
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
+
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
+autocmd FileType go nmap <leader>f <Plug>(go-alternate)
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+let g:go_fmd_command = "goimports"
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 1
 
 " Testing tool keybindings
 nnoremap <silent> t<C-n> :TestNearest<CR>
