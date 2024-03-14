@@ -4,7 +4,7 @@ let s:cpo_save=&cpo
 let mapleader = ","
 set cpo&vim
 " inoremap ^V^U ^V^Gu^V^U
-nnoremap - :Explore<Cr>
+nnoremap - :Telescope find_files<Cr>
 let &cpo=s:cpo_save
 unlet s:cpo_save
 set backspace=indent,eol,start
@@ -19,6 +19,8 @@ set langnoremap
 set nolangremap
 set nrformats=bin,hex
 set autowrite
+set foldmethod=indent
+set foldlevelstart=99
 set ruler
 set runtimepath+=~/.vim,/var/lib/vim/addons,/usr/share/vim/vimfiles,/usr/share/vim/vim80,/usr/share/vim/vimfiles/after,/var/lib/vim/addons/after,~/.vim/after
 set scrolloff=5
@@ -62,6 +64,17 @@ filetype plugin indent on
 " Plugins (hopefully)
 call plug#begin(stdpath('data') . 'plugged')
 
+Plug 'ThePrimeagen/git-worktree.nvim'
+
+Plug 'hoob3rt/lualine.nvim'
+Plug 'nvim-tree/nvim-web-devicons'
+
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.6' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
+
 Plug 'junegunn/fzf', { 'dir': '~/.fzf/', 'do': { -> fzf#install() } }
 Plug 'junegunn/vim-easy-align'
 
@@ -71,15 +84,23 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ }
 
 Plug 'protesilaos/prot16-vim'
-Plug 'Yggdroot/indentLine'
 Plug 'airblade/vim-gitgutter'
-Plug 'janko/vim-test'
+Plug 'vim-test/vim-test'
 
 Plug 'fatih/vim-go'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
 
 call plug#end()
+
+lua <<END
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'iceberg_dark',
+  }
+}
+END
 
 " Language Servers
 set hidden

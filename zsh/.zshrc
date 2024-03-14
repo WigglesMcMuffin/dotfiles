@@ -1,5 +1,4 @@
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="powerlevel9k/powerlevel9k"
 COMPLETION_WAITING_DOTS="true"
 export vim="nvim"
 export UNBUNDLED_COMMANDS=(kitchen knife)
@@ -15,7 +14,7 @@ plugins=(
   zsh-autosuggestions
 )
 source $ZSH/oh-my-zsh.sh
-source $HOME/workvenv/bin/activate
+#source $HOME/workvenv/bin/activate
 
 # =============================================================================
 #                                Path Fixing
@@ -32,7 +31,6 @@ if [ -d "/opt/chef-workstation/bin" ]; then
   export PATH="/opt/chef-workstation/bin:$PATH"
   eval "$(chef shell-init zsh)"
 fi
-export PATH=~/bin:$PATH
 
 # =============================================================================
 #                                   Variables
@@ -224,6 +222,7 @@ unfunction setup_agents
 # Source functions and aliases.
 [[ -f ~/.zsh_functions ]] && source ~/.zsh_functions
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
+[[ -f ~/.zsh_aws ]] && source ~/.zsh_aws
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
