@@ -1,4 +1,12 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export ZSH=$HOME/.oh-my-zsh
+ZSH_THEME="powerlevel10k/powerlevel10k"
 COMPLETION_WAITING_DOTS="true"
 export vim="nvim"
 export UNBUNDLED_COMMANDS=(kitchen knife)
@@ -14,7 +22,6 @@ plugins=(
   zsh-autosuggestions
 )
 source $ZSH/oh-my-zsh.sh
-#source $HOME/workvenv/bin/activate
 
 # =============================================================================
 #                                Path Fixing
@@ -22,7 +29,7 @@ source $ZSH/oh-my-zsh.sh
 
 if [ -d "$HOME/programming/go" ]; then
   export GOPATH="$HOME/programming/go"
-  export PATH="$GOPATH/bin:$PATH"
+  export PATH="$GOPATH/bin:$PATH:/usr/local/go/bin"
 fi
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 [ -d ${HOME}/.krew/bin ] && export PATH="$PATH:${HOME}/.krew/bin"
@@ -79,9 +86,6 @@ zplug "arzzen/calc.plugin.zsh"
 # Directory colors
 zplug "seebi/dircolors-solarized", ignore:"*", as:plugin
 
-# Load theme
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
-
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
     printf "Install plugins? [y/N]: "
@@ -136,9 +140,6 @@ fi
 # Easily switch primary foreground/background colors
 DEFAULT_FOREGROUND=006 DEFAULT_BACKGROUND=235
 DEFAULT_COLOR=$DEFAULT_FOREGROUND
-
-# powerlevel9k prompt theme
-[[ -f ~/.zsh_powerlevel ]] && source ~/.zsh_powerlevel
 
 # =============================================================================
 #                                   Options
@@ -228,3 +229,6 @@ unfunction setup_agents
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 # vim: ft=zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

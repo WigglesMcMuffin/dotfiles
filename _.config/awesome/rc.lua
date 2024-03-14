@@ -49,10 +49,6 @@ end
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
--- Pomodoro app
-local pomodoro = require("pomodoro")
-pomodoro.init()
-
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
 editor = os.getenv("EDITOR") or "editor"
@@ -239,8 +235,6 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            pomodoro.widget, pomodoro.icon_widget,
-            require("battery-widget") {},
             -- mykeyboardlayout,
             wibox.widget.systray(),
             mytextclock,
@@ -354,10 +348,6 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     awful.key({ modkey, "Shift" }, "p", function () awful.util.spawn_with_shell('/home/tmoss/bin/get_pass') end),
-    awful.key({ modkey }, "p", function() pomodoro:start() end),
-    awful.key({ modkey, "Control" }, "p", function () pomodoro:increase_time() end),
-    awful.key({ modkey, "Mod1" }, "p", function () pomodoro:decrease_time() end),
-    awful.key({ modkey, "Control", "Shift" }, "p", function () pomodoro:stop() end),
     awful.key({ modkey, "Mod1" }, "l", function () awful.util.spawn_with_shell('slock') end),
     awful.key({ modkey, "Shift" }, "n", function () awful.util.spawn_with_shell('kill -s USR1 $(pidof deadd-notification-center)') end)
     -- Menubar

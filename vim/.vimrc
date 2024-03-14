@@ -3,7 +3,6 @@ if &cp | set nocp | endif
 let s:cpo_save=&cpo
 let mapleader = ","
 set cpo&vim
-" inoremap ^V^U ^V^Gu^V^U
 nnoremap - :Telescope find_files<Cr>
 let &cpo=s:cpo_save
 unlet s:cpo_save
@@ -87,6 +86,7 @@ Plug 'protesilaos/prot16-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-test/vim-test'
 
+Plug 'mattn/vim-goimports'
 Plug 'fatih/vim-go'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
