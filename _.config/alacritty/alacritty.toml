@@ -1,4 +1,4 @@
-import = ["/home/wiggles/.config/alacritty/themes/themes/hyperion.toml"]
+import = ["~/.config/alacritty/themes/themes/hyperion.toml"]
 live_config_reload = true
 
 [bell]

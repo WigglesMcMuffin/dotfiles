@@ -1,4 +1,0 @@
-#!/bin/bash
-set -euo pipefail
-
-lpass show -c --password $(lpass ls | dmenu | awk '{print substr($NF, 0, length($NF)-1)}')
