@@ -29,6 +29,7 @@ return {
       })
     end
   },
+  { "ThePrimeagen/vim-be-good" },
   { "folke/neoconf.nvim", cmd = "Neoconf" },
   "junegunn/vim-easy-align",
   {
@@ -49,24 +50,8 @@ return {
   "fatih/vim-go",
   "AndrewRadev/splitjoin.vim",
   "SirVer/ultisnips",
-  "folke/neodev.nvim",
   "nvim-lua/popup.nvim",
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
-    config = function ()
-      local configs = require("nvim-treesitter.configs")
-
-      configs.setup({
-        ensure_installed = { "lua", "python", "vim", "vimdoc", "javascript", "html", "go", "hcl", "terraform" },
-        sync_install = false,
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
-    end
-  },
   {
     "nvim-telescope/telescope-fzf-native.nvim", build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
   },
 }
-

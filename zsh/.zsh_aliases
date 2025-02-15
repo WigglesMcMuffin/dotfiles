@@ -4,7 +4,7 @@ alias ..='cd ..'
 alias screenie='() { scrot ~/screencaps/$@.png }'
 
 
-alias ls='() { $(whence -p ls) -C --file-type --color=auto --group-directories-first $@ }'
+alias ls='() { k -h --group-directories-first $@ }'
 
 # colour greps
 alias grep='() { $(whence -p grep) --color=auto $@ }'

@@ -43,34 +43,27 @@ set smarttab
 
 " Make things look purdy
 syntax enable
-set number
 set fdm=indent
 filetype plugin indent on
 
 " Plugins (hopefully)
+" TODO: Figure out autozimu/LanguageClient-neovim again
 call plug#begin(stdpath('data') . 'plugged')
-
-Plug 'ThePrimeagen/harpoon'
-
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
 call plug#end()
 
 " Language Servers
 set hidden
 
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['/home/tmoss/workvenv/bin/pyls'],
-    \ }
-
-" LanguageClient keybindings
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-nnoremap <F5> <Plug>(lcn-menu)
+" let g:LanguageClient_serverCommands = {
+"     \ 'python': ['/home/tmoss/workvenv/bin/pyls'],
+"     \ }
+"
+" " LanguageClient keybindings
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+"
+" nnoremap <F5> <Plug>(lcn-menu)
 
 " Easy Align keybinds
 " Start interactive EasyAlign in visual mode (e.g. vipga)
