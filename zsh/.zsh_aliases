@@ -10,5 +10,6 @@ alias grep='() { $(whence -p grep) --color=auto $@ }'
 alias rm='rm -v'
 
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
+# TODO: Move this to conditional import for arch
 alias pac=yay
 pacmatic="sudo --preserve-env=pacman_program /usr/bin/pacmatic"
