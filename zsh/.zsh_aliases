@@ -3,16 +3,11 @@ alias ..='cd ..'
 # Take a screenshot
 alias screenie='() { scrot ~/screencaps/$@.png }'
 
-
-alias ls='() { k -h --group-directories-first $@ }'
-
 # colour greps
 alias grep='() { $(whence -p grep) --color=auto $@ }'
 
 # Show what rm is rm-ing
 alias rm='rm -v'
-alias rspec='rspec --color'
-alias vimrc='vim "$HOME/.vimrc"'
 
 zshaddhistory() { whence ${${(z)1}[1]} >| /dev/null || return 1 }
 alias pac=yay

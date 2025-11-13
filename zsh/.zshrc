@@ -1,3 +1,11 @@
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv export zsh)"
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 4h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [ ! -f "$SSH_AUTH_SOCK" ]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -5,19 +13,23 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+    . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+
+(( ${+commands[direnv]} )) && emulate zsh -c "$(direnv hook zsh)"
+
 export ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="powerlevel10k/powerlevel10k"
 COMPLETION_WAITING_DOTS="true"
 export vim="nvim"
 export BROWSER=qutebrowser
 plugins=(
+  direnv
+  eza
   git
-  git-extras
-  github
-  command-not-found
-  jump
-  zsh-syntax-highlighting
   zsh-autosuggestions
+  zsh-syntax-highlighting
 )
 source $ZSH/oh-my-zsh.sh
 
@@ -57,23 +69,18 @@ zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/colorize", from:oh-my-zsh
-zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/tmux", from:oh-my-zsh
 zplug "plugins/tmuxinator", from:oh-my-zsh
 zplug "plugins/z", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/npm", from:oh-my-zsh
-zplug "plugins/bundler", from:oh-my-zsh
-zplug "plugins/ruby", from:oh-my-zsh
-zplug "plugins/rbenv", from:oh-my-zsh
 
 # plugins
 
+# You should use
+zplug "MichaelAquilina/zsh-you-should-use"
+
 # Enhanced cd
 zplug "b4b4r07/enhancd", use:enhancd.sh
-
-# Enhanced dir list with git features
-zplug "supercrabtree/k"
 
 # Docker completion
 zplug "felixr/docker-zsh-completion"
@@ -81,8 +88,14 @@ zplug "felixr/docker-zsh-completion"
 # Simple zsh calculator
 zplug "arzzen/calc.plugin.zsh"
 
+# ZSH completions for direnv
+zplug "BronzeDeer/zsh-completion-sync", use:zsh-completion-sync.plugin.zsh
+
 # Directory colors
 zplug "seebi/dircolors-solarized", ignore:"*", as:plugin
+
+zplug "romkatv/powerlevel10k", as:theme, depth:1
+
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -105,6 +118,11 @@ if zplug check "seebi/dircolors-solarized"; then
     eval $(dircolors ~/.zplug/repos/seebi/dircolors-solarized/$scheme)
   fi
 fi
+
+# Load zsh-completion-sync
+#if zplug check "BronzeDeer/zsh-completion-sync"; then
+#
+#fi
 
 # highlighting
 if zplug check "zsh-users/zsh-syntax-highlighting"; then
@@ -145,6 +163,7 @@ DEFAULT_COLOR=$DEFAULT_FOREGROUND
 
 # improved less option
 export LESS="--tabs=4 --no-init --LONG-PROMPT --ignore-case --quit-if-one-screen --RAW-CONTROL-CHARS"
+export YSU_HARDCORE=1
 
 # History
 HISTFILE=~/.zsh_history
@@ -222,11 +241,3 @@ unfunction setup_agents
 [[ -f ~/.zsh_functions ]] && source ~/.zsh_functions
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
 [[ -f ~/.zsh_aws ]] && source ~/.zsh_aws
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-# vim: ft=zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
