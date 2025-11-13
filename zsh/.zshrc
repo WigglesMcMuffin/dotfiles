@@ -241,3 +241,10 @@ unfunction setup_agents
 [[ -f ~/.zsh_functions ]] && source ~/.zsh_functions
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
 [[ -f ~/.zsh_aws ]] && source ~/.zsh_aws
+
+[ -n "${commands[fzf-share]}" ] && source "$(fzf-share)/key-bindings.zsh"
+[ -n "${commands[fzf-share]}" ] && source "$(fzf-share)/completion.zsh"
+# vim: ft=zsh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
