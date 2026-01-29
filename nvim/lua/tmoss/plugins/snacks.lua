@@ -7,12 +7,13 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
+      animate = { enabled = true },
       scratch = { enabled = true },
-      input = { enabled = true},
-      indent = { enabled = true},
-      lazygit = { enabled = true},
-      dim = { enabled = true},
-      notifier = { enabled = true},
+      input = { enabled = true },
+      indent = { enabled = true },
+      lazygit = { enabled = true },
+      dim = { enabled = true },
+      notifier = { enabled = true },
     },
     keys = {
       { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
