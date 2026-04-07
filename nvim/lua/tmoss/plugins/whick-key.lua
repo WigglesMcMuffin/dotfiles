@@ -16,6 +16,7 @@ return {
         { "<leader>h", group = "Harpoon" },
         { "<leader>w", group = "Worktree" },
         { "<leader>t", group = "Telescope Finders" },
+        { "<leader>x", group = "Trouble" },
       })
     end
   }

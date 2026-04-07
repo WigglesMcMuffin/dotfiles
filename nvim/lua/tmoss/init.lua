@@ -35,7 +35,7 @@ require("lazy").setup({
 })
 
 require("tmoss/opts")
---require("tmoss/autocmds")
+require("tmoss/autocmds")
 require("tmoss/keymaps")
 --require("tmoss/git-repo-sync")
 --require("tmoss/run-on-save")

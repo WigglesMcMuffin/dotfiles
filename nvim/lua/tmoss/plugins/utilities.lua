@@ -7,7 +7,6 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-      animate = { enabled = true },
       scratch = { enabled = true },
       input = { enabled = true },
       indent = { enabled = true },
@@ -19,5 +18,8 @@ return {
       { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
       { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
     }
-  }
+  },
+  {
+    "nvim-mini/mini.nvim", version = '*'
+  },
 }

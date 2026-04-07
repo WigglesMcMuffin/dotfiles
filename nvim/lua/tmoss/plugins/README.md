@@ -1,0 +1,114 @@
+# List of plugins
+
+## saghen/blink.cmp 
+### Performant autocompletion plugin
+
+## fredrikaverpil/godoc.nvim
+### Fuzzy search Go docs within Neovim
+
+provides :GoDoc <string> functionality
+
+## nvim-telescope/telescope.nvim
+### Collection of useful pickers for nvim
+
+## nvim-treesitter/nvim-treesitter
+### Treesitter configurations and abstraction layer for nvim
+
+Treesitter parses files into lexical groups that be be worked on
+(i.e. it recognizes code blocks, and indentations and other things,
+for things like code folding, extraction, etc)
+
+## neovim/nvim-lspconfig
+### Quick base configs for a whole suite of LSPs
+
+Makes getting started with LSPs easier by provided configs for a bunch of them.
+Merges with any manual edits you make
+
+## folke/lazydev.nvim
+### Configures lua language server for editting neovim configs
+
+This is probably fine to keep, dunno I use it really enough to 
+justify it's installation sadly, but perhaps one day.
+
+## hoob3rt/lualine.nvim 
+### A blazing fast and easy to configure Neovim statusline written in Lua.
+
+## nvim-tree/nvim-tree.lua
+
+
+## nvim-neo-tree/neo-tree.nvim
+
+## tpope/vim-fugitive
+### fugitive.vim: A Git wrapper so awesome, it should be illegal
+
+I should 1000% be using this more.
+Specifically `:Gedit <ref>:%` and `:Gvdiffsplit`
+
+## FabijanZulj/blame.nvim
+### Neovim fugitive style git blame plugin
+
+I should 1000% be using this more.
+
+## folke/neoconf.nvim
+### Neovim plugin to manage global and project-local settings
+
+Limited usefulness apparently as gopls is not supported, maybe drop for the time being?
+
+## junegunn/vim-easy-align
+### A Vim alignment plugin
+
+This tool is amazing, and I'm very not good at all it's useful features
+
+## protesilaos/prot16-vim
+
+## lewis6991/gitsigns.nvim
+### Git integration for buffers
+
+This has some better diffing tools than vim-fugitive that I should incorporate
+
+## fatih/vim-go
+
+## AndrewRadev/splitjoin.vim
+### Switch between single-line and multiline forms of code
+
+This is the better version of J that I should remember to be using more often
+
+## SirVer/ultisnips
+
+## nvim-lua/popup.nvim
+### [WIP] An implementation of the Popup API from vim in Neovim. Hope to upstream when complete
+
+There is one of these in snacks, and mini, so I'll probably chuck thissun?
+
+## nvim-telescope/telescope-fzf-native.nvim
+
+## folke/snacks.nvim
+
+## polarmutex/git-worktree.nvim
+### A simple wrapper around git worktree operations, create, switch, and delete. There is some assumed workflow within this plugin, but pull requests are welcomed to fix that).
+
+It's been so long I've been trapped in no worktree mode, I almost forgot how this works
+Lists telescope as a dep, might want to see about switching to snacks or mini ui picker if possible
+
+## nvim-lua/plenary.nvim
+### plenary: full; complete; entire; absolute; unqualified. All the lua functions I don't want to write twice.
+
+Utility functions used by other tools I use and like
+
+## ThePrimeagen/Harpoon
+
+## folke/trouble.nvim
+
+## folke/which-key.nvim
+
+
+# To Add
+
+## preservim/tagbar
+### Vim plugin that displays tags in a window, ordered by scope
+
+## Tree sitter, apparently
+### 0.12 broke tree-sitter and now nvim-treesitter is archived?
+
+## aznhe21/actions-preview
+### Allow reviewing what code actions did

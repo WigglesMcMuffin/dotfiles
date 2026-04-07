@@ -23,10 +23,10 @@ return {
     version = "8",
     dependencies = {
       "nvim-lua/plenary.nvim",
-       --{
-       --  "nvim-telescope/telescope-fzf-native.nvim",
-       --  build = "make",
-       --},
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make",
+      },
     },
     keys = {
       { "<leader>tf", "<cmd>Telescope find_files<cr>", desc = "Telescope: Find files in working directory" },
@@ -49,11 +49,11 @@ return {
             hidden = true
           },
         },
-        --extensions = {
-        --  "fzf"
-        --},
+        extensions = {
+          "fzf"
+        },
       })
-      --telescope.load_extension("fzf")
+      telescope.load_extension("fzf")
     end,
   },
   {
