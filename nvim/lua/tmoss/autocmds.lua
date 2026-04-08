@@ -1,25 +1,26 @@
 -- Track down and exterminate all trailing whitespaces
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
-  command = "%s/\\s\\+$//e",
+  callback = function(args)
+    local trailspace = require("mini.trailspace")
+    trailspace.trim()
+    trailspace.trim_last_lines()
+  end
 })
 
 -- Highlight spaces dangling off the end of lines
-vim.cmd('hi HiTabs ctermbg=gray')
-vim.cmd('match HiTabs /\\t/')
-vim.cmd('hi ExtraWhitespace ctermbg=darkgreen guibg=darkgreen')
-vim.cmd('match ExtraWhitespace /\\s\\+$\\| \\+\\ze\\t/')
+-- vim.cmd('hi HiTabs ctermbg=gray')
+-- vim.cmd('match HiTabs /\\t/'
 
 -- In case I swap color schemes, reapply highlight
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   callback = function(args)
     vim.cmd('hi HiTabs ctermbg=gray')
-    vim.cmd('hi ExtraWhitespace ctermbg=darkgreen guibg=darkgreen')
   end
 })
 
--- Map keps when opening go files
+-- Map keys when opening go files
 --vim.api.nvim_create_autocmd("FileType", {
 --  pattern = "go",
 --  callback = function(args)

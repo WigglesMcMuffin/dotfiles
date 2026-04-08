@@ -1,15 +1,12 @@
 # List of plugins
 
-## saghen/blink.cmp 
+## saghen/blink.cmp
 ### Performant autocompletion plugin
 
 ## fredrikaverpil/godoc.nvim
 ### Fuzzy search Go docs within Neovim
 
 provides :GoDoc <string> functionality
-
-## nvim-telescope/telescope.nvim
-### Collection of useful pickers for nvim
 
 ## nvim-treesitter/nvim-treesitter
 ### Treesitter configurations and abstraction layer for nvim
@@ -27,16 +24,11 @@ Merges with any manual edits you make
 ## folke/lazydev.nvim
 ### Configures lua language server for editting neovim configs
 
-This is probably fine to keep, dunno I use it really enough to 
+This is probably fine to keep, dunno I use it really enough to
 justify it's installation sadly, but perhaps one day.
 
-## hoob3rt/lualine.nvim 
+## hoob3rt/lualine.nvim
 ### A blazing fast and easy to configure Neovim statusline written in Lua.
-
-## nvim-tree/nvim-tree.lua
-
-
-## nvim-neo-tree/neo-tree.nvim
 
 ## tpope/vim-fugitive
 ### fugitive.vim: A Git wrapper so awesome, it should be illegal
@@ -54,10 +46,6 @@ I should 1000% be using this more.
 
 Limited usefulness apparently as gopls is not supported, maybe drop for the time being?
 
-## junegunn/vim-easy-align
-### A Vim alignment plugin
-
-This tool is amazing, and I'm very not good at all it's useful features
 
 ## protesilaos/prot16-vim
 
@@ -68,21 +56,41 @@ This has some better diffing tools than vim-fugitive that I should incorporate
 
 ## fatih/vim-go
 
-## AndrewRadev/splitjoin.vim
-### Switch between single-line and multiline forms of code
 
-This is the better version of J that I should remember to be using more often
-
-## SirVer/ultisnips
 
 ## nvim-lua/popup.nvim
 ### [WIP] An implementation of the Popup API from vim in Neovim. Hope to upstream when complete
 
 There is one of these in snacks, and mini, so I'll probably chuck thissun?
 
-## nvim-telescope/telescope-fzf-native.nvim
+## mini-nvim/mini.nvim
+### Bundle of utility functions written in single files in lua
+
+Using:
+    - cmdline
+    - icons
+    - cursorword
+    - trailspace
+    - indentscope
+    - splitjoin
+
+    - pick
+    - diff
+    - files
+
+    - git
+    - clue
+
 
 ## folke/snacks.nvim
+### Bundle of utility functions for neovim to make things easier
+
+Using:
+    - scratch
+    - input
+    - lazygit
+    - dim
+    - notifier
 
 ## polarmutex/git-worktree.nvim
 ### A simple wrapper around git worktree operations, create, switch, and delete. There is some assumed workflow within this plugin, but pull requests are welcomed to fix that).
@@ -99,16 +107,49 @@ Utility functions used by other tools I use and like
 
 ## folke/trouble.nvim
 
-## folke/which-key.nvim
-
 
 # To Add
 
 ## preservim/tagbar
 ### Vim plugin that displays tags in a window, ordered by scope
 
-## Tree sitter, apparently
-### 0.12 broke tree-sitter and now nvim-treesitter is archived?
-
 ## aznhe21/actions-preview
 ### Allow reviewing what code actions did
+
+## akinsho/toggleterm
+### Pop up a terminal in neovim without interrupting workflow so much
+
+# Retired(?)
+
+## junegunn/vim-easy-align
+### A Vim alignment plugin
+#### mini has one, so I'm currently trying mini's version
+
+This tool is amazing, and I'm very not good at all it's useful features
+
+## AndrewRadev/splitjoin.vim
+### Switch between single-line and multiline forms of code
+#### Replaced by mini
+
+This is the better version of J that I should remember to be using more often
+
+## SirVer/ultisnips
+### Utility Snippets
+#### Not really using it, plus there is a mini version, maybe?
+
+## nvim-neo-tree/neo-tree.nvim
+### Opinionated file tree (netrw-like)
+#### Currently trying mini.picker and mini.files
+
+## nvim-tree/nvim-tree.lua
+### File tree
+#### Currently trying mini.picker and mini.files
+
+## folke/which-key.nvim
+### Tooling to remind of configured keymaps in neovim
+#### Trying mini.clue for a while
+
+## nvim-telescope/telescope.nvim
+### Collection of useful pickers for nvim
+#### Switching to mini.pick for a while
+

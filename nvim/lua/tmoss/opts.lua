@@ -22,10 +22,6 @@ vim.opt.hidden         = true -- Send buffers into memory when unloading, rather
                               -- And still having undo/redo history, etc
 
 -- Spacing
-vim.opt.tabstop     = 4
-vim.opt.softtabstop = 0
-vim.opt.expandtab   = true
-vim.opt.shiftwidth  = 2
-vim.opt.smarttab    = true
+vim.opt.smartindent = false  -- Prevent vim and treesitter from fighting over indentation (hopefully)
 
 vim.opt.termguicolors = true

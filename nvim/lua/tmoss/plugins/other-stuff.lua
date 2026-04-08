@@ -3,13 +3,20 @@ return {
     "folke/neoconf.nvim",
     opts = {},
   },
-  "junegunn/vim-easy-align",
-  "vim-test/vim-test",
-  "AndrewRadev/splitjoin.vim",
-  "SirVer/ultisnips",
-  "nvim-lua/popup.nvim",
   {
-    "nvim-telescope/telescope-fzf-native.nvim", build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+    "vim-test/vim-test",
+    keys={
+      { "<leader>tn",  "<cmd>TestNearest<cr>", desc = "vim-test: Test Nearest" },
+      { "<leader>tf",  "<cmd>TestFile<cr>", desc = "vim-test: Test File" },
+      { "<leader>ts",  "<cmd>TestSuite<cr>", desc = "vim-test: Test Suite" },
+      { "<leader>tl",  "<cmd>TestLast<cr>", desc = "vim-test: Test Last" },
+    },
   },
+  "nvim-lua/popup.nvim",
   "preservim/tagbar",
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    opts = {}
+  },
 }
