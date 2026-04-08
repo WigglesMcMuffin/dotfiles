@@ -20,6 +20,12 @@ return {
     }
   },
   {
-    "nvim-mini/mini.nvim", version = '*'
+    "nvim-mini/mini.nvim", version = '*',
+    config = function()
+      require("mini.pick").setup({})
+    end,
+    keys = {
+      { "<leader>tf", "<cmd>Pick files<cr>", desc = "Mini.pick: Find files in working directory" },
+    },
   },
 }

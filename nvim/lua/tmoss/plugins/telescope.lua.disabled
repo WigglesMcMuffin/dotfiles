@@ -1,31 +1,12 @@
 return {
   {
-    "polarmutex/git-worktree.nvim",
-    version = '^2',
-    dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope.nvim" },
-    keys = {
-      { "<leader>ws", function() require("telescope").extensions.git_worktree.git_worktree() end, desc = "List worktrees" },
-      { "<leader>wc", function() require("telescope").extensions.git_worktree.create_git_worktree() end, desc = "Create new worktree" },
-    },
-    config = function()
-      require("telescope").load_extension("git_worktree")
-
-      local Hooks = require('git-worktree.hooks')
-      Hooks.register(Hooks.type.SWITCH, Hooks.builtins.update_current_buffer_on_switch)
-      Hooks.register(Hooks.type.SWITCH, function(path, prev_path)
-        vim.notify("switched from " .. prev_path .. " to " .. path .. "... maybe")
-      end)
-    end,
-  },
-  {
     "nvim-telescope/telescope.nvim",
     -- tag = "0.1.6", backup old conf
     version = "8",
     dependencies = {
       "nvim-lua/plenary.nvim",
       {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
+        "nvim-telescope/telescope-fzf-native.nvim", build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
       },
     },
     keys = {
