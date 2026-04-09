@@ -15,6 +15,18 @@ return {
   "nvim-lua/popup.nvim",
   "preservim/tagbar",
   {
+    'dkendal/nvim-alternate',
+    lazy = false, -- Important
+    opts = {
+      rules = {
+	{ pattern = { "(.+).go", "%1_test.go" }}
+      }
+    },
+    keys = {
+      { "<leader>a", '<plug>(alternate-edit)', desc="edit alternate file" },
+    },
+  },
+  {
     'akinsho/toggleterm.nvim',
     version = "*",
     opts = {}

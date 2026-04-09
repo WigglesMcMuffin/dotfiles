@@ -43,7 +43,7 @@ return {
         },
 
         clues = {
-          { mode = 'n', keys= '<Leader>j', desc= '+ Finders' },
+          { mode = 'n', keys= '<Leader>f', desc= '+ Finders' },
           { mode = 'n', keys= '<Leader>l', desc= '+ LSP' },
 
           -- Git
@@ -75,8 +75,13 @@ return {
       })
     end,
     keys = {
-      { "<leader>jf", "<cmd>Pick files<cr>", desc = "Mini.pick: Find files in working directory" },
-      { "<leader>gd", function () require("mini.diff").toggle_overlay() end, desc = "Toggle git diff display" },
+      { "<leader>ff", "<cmd>Pick files<cr>", desc = "Mini.pick: Find files in working directory" },
+      { "<leader>fg", function()
+      	require("mini.pick").builtin.grep_live({}, {
+	  --window = { config = { width = vim.o.columns }},
+	})
+      end, desc = "Mini.pick: Find files in working directory" },
+      { "<leader>gd", function() require("mini.diff").toggle_overlay() end, desc = "Toggle git diff display" },
       { "<leader>ga", "<cmd>Git add %<cr>", desc = "Mini.git: Stage file for git" },
     },
   },
