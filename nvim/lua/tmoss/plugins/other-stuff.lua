@@ -1,9 +1,5 @@
 return {
   {
-    "folke/neoconf.nvim",
-    opts = {},
-  },
-  {
     "vim-test/vim-test",
     keys={
       { "<leader>tn",  "<cmd>TestNearest<cr>", desc = "vim-test: Test Nearest" },
@@ -15,15 +11,27 @@ return {
   "nvim-lua/popup.nvim",
   "preservim/tagbar",
   {
-    'dkendal/nvim-alternate',
+    'rgroli/other.nvim',
     lazy = false, -- Important
-    opts = {
-      rules = {
-	{ pattern = { "(.+).go", "%1_test.go" }}
-      }
-    },
+    config = function()
+      require("other-nvim").setup({
+        mappings = {
+          -- builtin mappings
+          "livewire",
+          "angular",
+          "laravel",
+          "rails",
+          "golang",
+          "python",
+          "react",
+          "rust",
+          "elixir",
+          "clojure",
+        },
+      })
+    end,
     keys = {
-      { "<leader>a", '<plug>(alternate-edit)', desc="edit alternate file" },
+      { "<leader>a", '<cmd>Other<cr>', desc="edit alternate file" },
     },
   },
   {

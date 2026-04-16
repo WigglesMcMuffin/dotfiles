@@ -1,7 +1,20 @@
 return {
   {
     "folke/trouble.nvim",
-    opts={},
+    opts={
+      modes = {
+        newmode = {
+	  mode = "diagnostics",
+          auto_close = false,
+          auto_open = true,
+          open_no_results = true,
+	  type = "split",
+	  title = "Diagnostics",
+	  relative = "win",
+	  position = "bottom"
+	},
+      },
+    },
     cmd = "Trouble",
     keys = {
       {
