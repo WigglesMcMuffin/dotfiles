@@ -11,6 +11,7 @@ return {
       require("mini.trailspace").setup({})
       require("mini.indentscope").setup({})
       require("mini.splitjoin").setup({})
+      require("mini.align").setup({})
       require("mini.jump").setup({})
       require("mini.jump2d").setup({})
 

@@ -11,17 +11,21 @@ vim.opt.foldlevelstart = 99
 vim.opt.updatetime     = 500
 
 vim.opt.display        = "truncate" -- Controls whether the beginning or end of a VERY long line is showed
-vim.opt.incsearch      = true -- Show matches as they're being typed
-vim.opt.scrolloff      = 8    -- How many lines should the cursor be buffered from the top or bottom
-vim.opt.relativenumber = true -- Show the relative line numbers up and down from current line
-vim.opt.number         = true -- Show the line number you're currently on
-vim.opt.showcmd        = true -- Show the command/chord/selection as it's being built
-vim.opt.wildmenu       = true -- Show completions in command mode (basically tab search)
-vim.opt.hidden         = true -- Send buffers into memory when unloading, rather that closing
-                              -- This is to allow opening a different file, then coming back
-                              -- And still having undo/redo history, etc
+vim.opt.incsearch      = true       -- Show matches as they're being typed
+vim.opt.scrolloff      = 8          -- How many lines should the cursor be buffered from the top or bottom
+vim.opt.relativenumber = true       -- Show the relative line numbers up and down from current line
+vim.opt.number         = true       -- Show the line number you're currently on
+vim.opt.showcmd        = true       -- Show the command/chord/selection as it's being built
+vim.opt.wildmenu       = true       -- Show completions in command mode (basically tab search)
+vim.opt.hidden         = true       -- Send buffers into memory when unloading, rather that closing
+                                    -- This is to allow opening a different file, then coming back
+                                    -- And still having undo/redo history, etc
 
 -- Spacing
-vim.opt.smartindent = false  -- Prevent vim and treesitter from fighting over indentation (hopefully)
+vim.opt.smartindent = false         -- Prevent vim and treesitter from fighting over indentation (hopefully)
 
 vim.opt.termguicolors = true
+
+
+-- vim-test
+vim.g["test#strategy"] = "toggleterm"
