@@ -1,6 +1,7 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
+    enabled=false,
     -- tag = "0.1.6", backup old conf
     version = "8",
     dependencies = {
@@ -39,6 +40,7 @@ return {
   },
   {
     "ThePrimeagen/harpoon",
+    enabled=false,
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -68,4 +70,3 @@ return {
     end,
   },
 }
-

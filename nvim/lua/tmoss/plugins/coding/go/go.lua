@@ -1,5 +1,5 @@
 return {
-  --{ "fatih/vim-go", enabled=true },
+  { "fatih/vim-go", enabled=true },
   {
     "fredrikaverpil/godoc.nvim",
     version = "*",

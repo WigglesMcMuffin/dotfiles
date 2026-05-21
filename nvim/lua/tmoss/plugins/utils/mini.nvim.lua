@@ -5,7 +5,6 @@ return {
   {
     "nvim-mini/mini.nvim", version = '*',
     config = function()
-      require("mini.cmdline").setup({})
       require("mini.icons").setup({})
       require("mini.cursorword").setup({})
       require("mini.trailspace").setup({})
@@ -13,7 +12,6 @@ return {
       require("mini.splitjoin").setup({})
       require("mini.align").setup({})
       require("mini.jump").setup({})
-      require("mini.jump2d").setup({})
 
       require("mini.pick").setup({})
       require("mini.diff").setup({})

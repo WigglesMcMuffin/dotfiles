@@ -24,13 +24,13 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",         -- required
 
-      -- Only one of these is needed.
+      -- Git diff changer
       "sindrets/diffview.nvim",        -- optional
 
       -- For a custom log pager
       "m00qek/baleia.nvim",            -- optional
 
-      -- Only one of these is needed.
+      -- File picker
       "nvim-mini/mini.pick",           -- optional
     },
     cmd = "Neogit",

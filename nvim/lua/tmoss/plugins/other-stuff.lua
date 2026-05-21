@@ -37,6 +37,8 @@ return {
   {
     'akinsho/toggleterm.nvim',
     version = "*",
-    opts = {}
+    opts = {
+	shell = "/usr/bin/env zsh",
+    }
   },
 }
