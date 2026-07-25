@@ -38,4 +38,18 @@ return {
       { "<leader>gg", "<cmd>Neogit kind=floating<cr>", desc = "Show Neogit UI" }
     }
   },
+  { -- Git worktree integration
+    "afonsofrancof/worktrees.nvim",
+    event = "VeryLazy",
+    opts = {
+      base_path = ".",
+      path_template = "{branch}",
+
+      mappings = {
+        create = "<leader>wc",
+	delete = "<leader>wd",
+	switch = "<leader>ws",
+      }
+    }
+  }
 }
